@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#070b10">
+    <title>Hyperload | Training Planner</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <div class="brand-badge">training planner</div>
+            <h1>HYPERLOAD</h1>
+            <!-- Navigazione Settimanale -->
+            <div class="week-selector">
+                <button id="prevWeekBtn">&larr;</button>
+                <span id="currentWeekDisplay">Settimana 1</span>
+                <button id="nextWeekBtn">&rarr;</button>
+                <button id="addWeekBtn" class="btn-secondary">+ Nuova Settimana</button>
+            </div>
+        </header>
+
+        <main>
+            <section class="stats-grid" aria-label="Statistiche della settimana">
+                <div class="stat-card">
+                    <span>esercizi</span>
+                    <strong id="statsExercises">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span>serie</span>
+                    <strong id="statsSets">0</strong>
+                </div>
+                <div class="stat-card">
+                    <span>moduli</span>
+                    <strong id="statsModules">4</strong>
+                </div>
+                <div class="stat-card">
+                    <span>settimana</span>
+                    <strong id="statsWeek">1</strong>
+                </div>
+            </section>
+
+            <section class="card add-exercise-card">
+                <div class="panel-head">
+                    <h3>Modulo A-B-C-D</h3>
+                    <div class="panel-actions">
+                        <button type="button" id="filterWeightBtn" class="ghost-btn">Peso</button>
+                        <button type="button" id="toggleAllExercisesBtn" class="ghost-btn">Apri tutti</button>
+                    </div>
+                </div>
+                <form id="exerciseForm">
+                    <div class="form-group">
+                        <label for="moduleSelect" class="label-inline">Modulo</label>
+                        <select id="moduleSelect" class="module-select">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="exerciseName" placeholder="Nome esercizio (es. Panca Piana)" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="number" id="initialSets" placeholder="N° Serie" min="1" value="3" required>
+                        <input type="text" id="initialReps" placeholder="Ripetizioni (es. 8 o max)" required>
+                        <select id="trainingMethod" class="module-select">
+                            <option value="Normale">Normale</option>
+                            <option value="Rest-Pause">Rest-Pause</option>
+                            <option value="Backoff">Backoff</option>
+                            <option value="Stripping">Stripping</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Aggiungi alla Scheda</button>
+                </form>
+            </section>
+
+            <div id="moduleTabs" class="module-tabs" aria-label="Moduli della settimana"></div>
+
+            <section id="workoutList" class="workout-list">
+                <!-- Gli esercizi verranno inseriti dinamicamente da JS -->
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
